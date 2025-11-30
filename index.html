@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Drag-n-Done</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="header">
+        <h1>Drag-n-Done</h1>    
+        <div class="controls">
+            <button id="addTaskBtn">+ Add Task</button>
+            <button id="trashBtn">🗑️</button>
+            <button id="modeToggle">🌙</button>
+        </div>
+    </div>
+
+    <div class="filters">
+        <input type="text" id="searchBox" placeholder="Search tasks...">
+        <select id="priorityFilter">
+            <option value="all">All Priorities</option>
+            <option value="low">Low</option>
+            <option value="medium">Medium</option>
+            <option value="high">High</option>
+        </select>
+    </div>
+
+    <div id="errorContainer"></div>
+
+    <div class="board">
+        <div class="column" data-status="todo">
+            <h2>📝 To Do</h2>
+            <div class="task-container" id="todoCol"></div>
+        </div>
+        <div class="column" data-status="in-progress">
+            <h2>⚙️ In Progress</h2>
+            <div class="task-container" id="progressCol"></div>
+        </div>
+        <div class="column" data-status="done">
+            <h2>✅ Done</h2>
+            <div class="task-container" id="doneCol"></div>
+        </div>
+    </div>
+
+    <div class="modal" id="taskModal">
+        <div class="modal-content">
+            <h2>Add Task</h2>
+            <div class="form-group">
+                <label>Title</label>
+                <input type="text" id="taskTitle" placeholder="Enter task title">
+            </div>
+            <div class="form-group">
+                <label>Tags (comma-separated)</label>
+                <input type="text" id="taskTags" placeholder="e.g. urgent, design">
+            </div>
+            <div class="form-group">
+                <label>Priority</label>
+                <select id="taskPriority">
+                    <option value="low">Low</option>
+                    <option value="medium">Medium</option>
+                    <option value="high">High</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label>Due Date</label>
+                <input type="date" id="taskDue">
+            </div>
+            <div class="form-group">
+                <label>Subtasks</label>
+                <div id="subtaskList"></div>
+                <input type="text" id="newSubtaskInput" placeholder="Add subtask">
+                <button id="addSubtaskBtn" style="margin-top: 10px;">Add Subtask</button>
+            </div>
+            <div class="button-group">
+                <button id="cancelBtn">Cancel</button>
+                <button id="saveBtn">Save Task</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal" id="trashModal">
+        <div class="modal-content">
+            <h2>Trash</h2>
+            <div id="trashList"></div>
+            <div class="button-group">
+                <button id="closeTrash">Close</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="toast"></div>
+
+    <script src="script.js"></script>
+</body>
+</html>
